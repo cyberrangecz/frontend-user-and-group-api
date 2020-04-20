@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "kypo-user-and-group-api": [
+        "dist/kypo-user-and-group-api/kypo-user-and-group-api",
+        "dist/kypo-user-and-group-api"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

@@ -1,0 +1,9 @@
+{
+  "name": "kypo-user-and-group-api",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^9.0.7",
+    "@angular/core": "^9.0.7",
+    "tslib": "^1.10.0"
+  }
+}

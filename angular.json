@@ -2,5 +2,46 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1, 
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "kypo-user-and-group-api": {
+      "projectType": "library",
+      "root": "projects/kypo-user-and-group-api",
+      "sourceRoot": "projects/kypo-user-and-group-api/src",
+      "prefix": "kypo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/kypo-user-and-group-api/tsconfig.lib.json",
+            "project": "projects/kypo-user-and-group-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/kypo-user-and-group-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/kypo-user-and-group-api/src/test.ts",
+            "tsConfig": "projects/kypo-user-and-group-api/tsconfig.spec.json",
+            "karmaConfig": "projects/kypo-user-and-group-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/kypo-user-and-group-api/tsconfig.lib.json",
+              "projects/kypo-user-and-group-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "kypo-user-and-group-api"
 }
