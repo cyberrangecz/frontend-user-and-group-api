@@ -7,7 +7,17 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "build-lib": "ng build kypo-user-and-group-api --prod",
+    "create-package": "cd dist/kypo-user-and-group-api && npm pack",
+    "build-and-pack": "npm install && npm run build-lib && npm run create-package",
+    "publish": "npm run build-and-pack && cd dist/kypo-user-and-group-api && npm publish --registry=http://kypo-storage.ics.muni.cz:8081/repository/npm-hosted"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "ng lint"
+    }
   },
   "private": true,
   "dependencies": {
@@ -18,6 +28,8 @@
     "@angular/forms": "~9.0.6",
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
+    "kypo-common": "9.0.1",
+    "kypo-user-and-group-model": "9.0.0",
     "@angular/router": "~9.0.6",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
@@ -40,6 +52,10 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.3.0",
+    "husky": "^4.2.5",
+    "prettier": "2.0.4",
     "ng-packagr": "^9.0.0",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
