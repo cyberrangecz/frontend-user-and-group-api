@@ -1,27 +1,46 @@
-# KypoUserAndGroupApi
+# KYPO User and Group API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+This library contains Angular API services of backend [KYPO User and Group service](https://gitlab.ics.muni.cz/kypo-crp/backend-java/kypo2-user-and-group).
+It contains default implementation and mapping from DTOs to internal frontend model imported from [kypo-user-and-group-model](https://gitlab.ics.muni.cz/kypo-crp/frontend-angular/models/kypo-user-and-group-model).
+You can override existing services by implementing the related abstract class and provide it in module.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+*  Angular 9+
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+To use kypo-user-and-group-api in your application, follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Run `npm install kypo-user-and-group-api`
+2. Install peer dependencies
+3. Create an instance of `KypoUserAndGroupApiConfig`
+4. Import `KypoUserAndGroupApiModule` with config passed to `forRoot()` method
 
-## Running unit tests
+This will provide all API services with default implementation. If you want to override the default implementation, extend an API service
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+@Injectable()
+export class MyUserApi extends UserApi {
+    ...
+}
+```
 
-## Running end-to-end tests
+and provide your implementation in the module 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+@NgModule({
+    imports: [
+       ...
+    ],
+    providers: [
+        { provide: UserApi, useClass: MyUserApi }
+    ]
+})
+export class MyModule {
+}
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
