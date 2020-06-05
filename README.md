@@ -7,7 +7,7 @@ You can override existing services by implementing the related abstract class an
 
 ## Prerequisites
 
-*  Angular 9+
+* NPM with private [KYPO Nexus repository](https://projects.ics.muni.cz/projects/kbase/knowledgebase/articles/153)
 
 ## Usage
 
