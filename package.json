@@ -11,8 +11,7 @@
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "build-lib": "ng build kypo-user-and-group-api --prod",
     "create-package": "cd dist/kypo-user-and-group-api && npm pack",
-    "build-and-pack": "npm install && npm run build-lib && npm run create-package",
-    "publish": "npm run build-and-pack && cd dist/kypo-user-and-group-api && npm publish --registry=http://kypo-storage.ics.muni.cz:8081/repository/npm-hosted"
+    "build-and-pack": "npm install && npm run build-lib && npm run create-package"
   },
   "husky": {
     "hooks": {
@@ -28,7 +27,7 @@
     "@angular/forms": "~9.0.6",
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
-    "kypo-common": "9.0.1",
+    "kypo-common": "9.0.2",
     "kypo-user-and-group-model": "9.0.0",
     "@angular/router": "~9.0.6",
     "rxjs": "~6.5.4",
