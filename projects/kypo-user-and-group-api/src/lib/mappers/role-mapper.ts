@@ -1,4 +1,4 @@
-import { KypoPaginatedResource, KypoPagination } from 'kypo-common';
+import { KypoPaginatedResource } from 'kypo-common';
 import { UserRole } from 'kypo-user-and-group-model';
 import { RestResourceDTO } from '../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../DTO/role/role-dto';
