@@ -2,10 +2,12 @@
   "name": "kypo-user-and-group-api",
   "version": "9.0.0",
   "peerDependencies": {
-    "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7",
-    "kypo-common": "9.0.1",
-    "kypo-user-and-group-model": "9.0.0",
-    "tslib": "^1.10.0"
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "kypo-common": "~10.0.",
+    "kypo-user-and-group-model": "~10.0.0"
+},
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }
