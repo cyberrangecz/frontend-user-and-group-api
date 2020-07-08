@@ -1,4 +1,4 @@
-import { KypoPaginatedResource } from 'kypo-common';
+import { PaginatedResource } from '@sentinel/common';
 import { MicroserviceRole } from 'kypo-user-and-group-model';
 import { Microservice } from 'kypo-user-and-group-model';
 import { MicroserviceCreateDTO } from '../DTO/microservice/microservice-create-dto.model';
@@ -40,8 +40,8 @@ export class MicroserviceMapper {
    */
   static mapMicroserviceDTOsToMicroservices(
     restResource: RestResourceDTO<MicroserviceDTO>
-  ): KypoPaginatedResource<Microservice> {
-    const result = new KypoPaginatedResource<Microservice>(
+  ): PaginatedResource<Microservice> {
+    const result = new PaginatedResource<Microservice>(
       restResource.content.map((microserviceDTO) => this.mapMicroserviceDTOToMicroservice(microserviceDTO)),
       PaginationMapper.mapDTOToPagination(restResource.pagination)
     );

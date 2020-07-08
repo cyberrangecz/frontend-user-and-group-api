@@ -1,4 +1,4 @@
-import { KypoPaginatedResource } from 'kypo-common';
+import { PaginatedResource } from '@sentinel/common';
 import { Group } from 'kypo-user-and-group-model';
 import { GroupDTO } from '../DTO/group/group-dto.model';
 import { CreateGroupDTO } from '../DTO/group/new-group-dto.model';
@@ -18,8 +18,8 @@ export class GroupMapper {
    * Maps paginated group dto to internal model
    * @param restResource paginated group dto
    */
-  static mapPaginatedGroupDTOsToGroups(restResource: RestResourceDTO<GroupDTO>): KypoPaginatedResource<Group> {
-    return new KypoPaginatedResource<Group>(
+  static mapPaginatedGroupDTOsToGroups(restResource: RestResourceDTO<GroupDTO>): PaginatedResource<Group> {
+    return new PaginatedResource<Group>(
       restResource.content.map((groupDTO) => this.mapGroupDTOToGroup(groupDTO)),
       PaginationMapper.mapDTOToPagination(restResource.pagination)
     );

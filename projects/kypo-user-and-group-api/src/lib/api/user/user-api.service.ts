@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import { User, UserRole } from 'kypo-user-and-group-model';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ export abstract class UserApi {
    * @param pagination requested pagination
    * @param filter filter to be applied on users
    */
-  abstract getAll(pagination: KypoRequestedPagination, filter?: KypoFilter[]): Observable<KypoPaginatedResource<User>>;
+  abstract getAll(pagination: RequestedPagination, filter?: SentinelFilter[]): Observable<PaginatedResource<User>>;
 
   /**
    * Sends http request to get user by id
@@ -33,9 +33,9 @@ export abstract class UserApi {
    */
   abstract getUsersNotInGroup(
     groupId: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<User>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<User>>;
 
   /**
    * Sends http request to get users that are members of provided groups
@@ -45,9 +45,9 @@ export abstract class UserApi {
    */
   abstract getUsersInGroups(
     groupIds: number[],
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<User>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<User>>;
 
   /**
    * Sends http request to delete user
@@ -59,13 +59,13 @@ export abstract class UserApi {
    * Sends http request to get roles for given user id
    * @param userId id of user to get roles for
    */
-  abstract getUserRoles(userId: number): Observable<KypoPaginatedResource<UserRole>>;
+  abstract getUserRoles(userId: number): Observable<PaginatedResource<UserRole>>;
 
   /**
    * Sends http request to get multiplle users by their ids
    * @param userIds id of users to get
    */
-  abstract getUsersByIds(userIds: number): Observable<KypoPaginatedResource<User>>;
+  abstract getUsersByIds(userIds: number): Observable<PaginatedResource<User>>;
 
   /**
    * Sends http request to get details of user who is logged in

@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import { Microservice } from 'kypo-user-and-group-model';
 import { Observable } from 'rxjs';
 
@@ -18,7 +18,7 @@ export abstract class MicroserviceApi {
    * @param filter filter to be applied on microservices
    */
   abstract getAll(
-    pagination: KypoRequestedPagination,
-    filter?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<Microservice>>;
+    pagination: RequestedPagination,
+    filter?: SentinelFilter[]
+  ): Observable<PaginatedResource<Microservice>>;
 }

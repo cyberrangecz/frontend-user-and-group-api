@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoFilter, KypoPaginatedResource, KypoParamsMerger, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, SentinelParamsMerger, RequestedPagination } from '@sentinel/common';
 import { Microservice } from 'kypo-user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -49,8 +49,8 @@ export class MicroserviceDefaultApi extends MicroserviceApi {
    * @param pagination requested pagination
    * @param filter filter to be applied on microservices
    */
-  getAll(pagination: KypoRequestedPagination, filter?: KypoFilter[]): Observable<KypoPaginatedResource<Microservice>> {
-    const params = KypoParamsMerger.merge([
+  getAll(pagination: RequestedPagination, filter?: SentinelFilter[]): Observable<PaginatedResource<Microservice>> {
+    const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filter),
     ]);

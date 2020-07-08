@@ -1,4 +1,4 @@
-import { KypoPaginatedResource } from 'kypo-common';
+import { PaginatedResource } from '@sentinel/common';
 import { UserRole } from 'kypo-user-and-group-model';
 import { RestResourceDTO } from '../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../DTO/role/role-dto';
@@ -12,10 +12,10 @@ export class RoleMapper {
    * Maps roles DTOs to internal model
    * @param resource roles dto
    */
-  static mapPaginatedRolesDTOtoRoles(resource: RestResourceDTO<RoleDTO>): KypoPaginatedResource<UserRole> {
+  static mapPaginatedRolesDTOtoRoles(resource: RestResourceDTO<RoleDTO>): PaginatedResource<UserRole> {
     const content = this.mapRoleDTOsToRoles(resource.content);
     const pagination = PaginationMapper.mapDTOToPagination(resource.pagination);
-    return new KypoPaginatedResource(content, pagination);
+    return new PaginatedResource(content, pagination);
   }
 
   static mapRoleDTOsToRoles(dtos: RoleDTO[]): UserRole[] {
