@@ -1,4 +1,4 @@
-import { KypoFilter, KypoPaginatedResource, KypoRequestedPagination } from 'kypo-common';
+import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
 import { User, UserRole } from 'kypo-user-and-group-model';
 import { Observable } from 'rxjs';
 
@@ -11,10 +11,7 @@ export abstract class RoleApi {
    * @param pagination requested pagination
    * @param filters filters to be applied on roles
    */
-  abstract getAll(
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<UserRole>>;
+  abstract getAll(pagination: RequestedPagination, filters?: SentinelFilter[]): Observable<PaginatedResource<UserRole>>;
 
   /**
    * Sends http request to get role by id
@@ -30,9 +27,9 @@ export abstract class RoleApi {
    */
   abstract getUsersForRole(
     id: number,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<User>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<User>>;
 
   /**
    * Sends http request to get all users wit given role type
@@ -42,9 +39,9 @@ export abstract class RoleApi {
    */
   abstract getUsersForRoleType(
     type: string,
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<User>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<User>>;
 
   /**
    * Sends http request to get all users wit given role type and not with given id
@@ -56,7 +53,7 @@ export abstract class RoleApi {
   abstract getUsersNotWithIds(
     type: string,
     ids: number[],
-    pagination: KypoRequestedPagination,
-    filters?: KypoFilter[]
-  ): Observable<KypoPaginatedResource<User>>;
+    pagination: RequestedPagination,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<User>>;
 }

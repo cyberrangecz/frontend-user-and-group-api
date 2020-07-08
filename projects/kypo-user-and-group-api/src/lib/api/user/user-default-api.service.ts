@@ -1,9 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KypoPaginatedResource } from 'kypo-common';
-import { KypoFilter } from 'kypo-common';
-import { KypoRequestedPagination } from 'kypo-common';
-import { KypoParamsMerger } from 'kypo-common';
+import { PaginatedResource, SentinelFilter, RequestedPagination, SentinelParamsMerger } from '@sentinel/common';
 import { User, UserRole } from 'kypo-user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -36,8 +33,8 @@ export class UserDefaultApi extends UserApi {
    * @param pagination requested pagination
    * @param filter filter to be applied on users
    */
-  getAll(pagination: KypoRequestedPagination, filter: KypoFilter[] = []): Observable<KypoPaginatedResource<User>> {
-    const params = KypoParamsMerger.merge([
+  getAll(pagination: RequestedPagination, filter: SentinelFilter[] = []): Observable<PaginatedResource<User>> {
+    const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filter),
     ]);
@@ -74,10 +71,10 @@ export class UserDefaultApi extends UserApi {
    */
   getUsersNotInGroup(
     groupId: number,
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<User>> {
-    const params = KypoParamsMerger.merge([
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<User>> {
+    const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filters),
     ]);
@@ -97,11 +94,11 @@ export class UserDefaultApi extends UserApi {
    */
   getUsersInGroups(
     groupIds: number[],
-    pagination: KypoRequestedPagination,
-    filters: KypoFilter[] = []
-  ): Observable<KypoPaginatedResource<User>> {
+    pagination: RequestedPagination,
+    filters: SentinelFilter[] = []
+  ): Observable<PaginatedResource<User>> {
     const idParams = new HttpParams().set('ids', groupIds.toString());
-    const params = KypoParamsMerger.merge([
+    const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filters),
       idParams,
@@ -125,7 +122,7 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to get roles for given user id
    * @param userId id of user to delete
    */
-  getUserRoles(userId: number): Observable<KypoPaginatedResource<UserRole>> {
+  getUserRoles(userId: number): Observable<PaginatedResource<UserRole>> {
     return this.http
       .get<RestResourceDTO<RoleDTO>>(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/${userId}`)
       .pipe(map((resp) => RoleMapper.mapPaginatedRolesDTOtoRoles(resp)));
@@ -135,7 +132,7 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to get multiplle users by their ids
    * @param userIds id of users to get
    */
-  getUsersByIds(userIds: number): Observable<KypoPaginatedResource<User>> {
+  getUsersByIds(userIds: number): Observable<PaginatedResource<User>> {
     const idParams = new HttpParams().set('ids', userIds.toString());
     return this.http
       .get<RestResourceDTO<UserDTO>>(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/ids`, {

@@ -1,4 +1,4 @@
-import { KypoPaginatedResource } from 'kypo-common';
+import { PaginatedResource } from '@sentinel/common';
 import { User } from 'kypo-user-and-group-model';
 import { RestResourceDTO } from '../DTO/rest-resource-dto.model';
 import { UserDTO } from '../DTO/user/user-dto.model';
@@ -14,8 +14,8 @@ export class UserMapper {
    * Maps user dtos to internal model
    * @param restResource user dtos
    */
-  static mapUserDTOsToUsers(restResource: RestResourceDTO<UserDTO>): KypoPaginatedResource<User> {
-    const result = new KypoPaginatedResource<User>(
+  static mapUserDTOsToUsers(restResource: RestResourceDTO<UserDTO>): PaginatedResource<User> {
+    const result = new PaginatedResource<User>(
       restResource.content.map((userDTO) => this.mapUserDTOToUser(userDTO)),
       PaginationMapper.mapDTOToPagination(restResource.pagination)
     );
