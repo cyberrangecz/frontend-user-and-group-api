@@ -1,5 +1,5 @@
 {
-  "name": "kypo-user-and-group-api",
+  "name": "@kypo/user-and-group-api",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

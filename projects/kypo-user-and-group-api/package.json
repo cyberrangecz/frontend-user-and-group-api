@@ -1,5 +1,5 @@
 {
-  "name": "kypo-user-and-group-api",
+  "name": "@kypo/user-and-group-api",
   "version": "10.1.0",
   "peerDependencies": {
     "@angular/common": "^10.0.0",
