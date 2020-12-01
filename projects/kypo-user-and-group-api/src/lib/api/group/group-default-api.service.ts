@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SentinelParamsMerger, RequestedPagination, SentinelFilter, PaginatedResource } from '@sentinel/common';
-import { Group, UserRole } from 'kypo-user-and-group-model';
+import { Group, UserRole } from '@kypo/user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GroupDTO } from '../../DTO/group/group-dto.model';

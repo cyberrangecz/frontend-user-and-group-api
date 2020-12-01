@@ -5,7 +5,7 @@
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "@sentinel/common": "~10.0.0",
-    "kypo-user-and-group-model": "~10.0.0"
+    "@kypo/user-and-group-model": "~10.1.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

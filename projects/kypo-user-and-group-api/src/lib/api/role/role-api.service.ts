@@ -1,5 +1,5 @@
 import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
-import { User, UserRole } from 'kypo-user-and-group-model';
+import { User, UserRole } from '@kypo/user-and-group-model';
 import { Observable } from 'rxjs';
 
 /**

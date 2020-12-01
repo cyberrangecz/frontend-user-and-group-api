@@ -1,5 +1,5 @@
 import { PaginatedResource } from '@sentinel/common';
-import { UserRole } from 'kypo-user-and-group-model';
+import { UserRole } from '@kypo/user-and-group-model';
 import { RestResourceDTO } from '../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../DTO/role/role-dto';
 import { PaginationMapper } from './pagination-mapper';
