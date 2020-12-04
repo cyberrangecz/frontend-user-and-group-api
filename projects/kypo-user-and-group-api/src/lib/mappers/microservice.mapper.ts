@@ -1,6 +1,6 @@
 import { PaginatedResource } from '@sentinel/common';
-import { MicroserviceRole } from '@kypo/user-and-group-model';
-import { Microservice } from '@kypo/user-and-group-model';
+import { MicroserviceRole } from '@muni-kypo-crp/user-and-group-model';
+import { Microservice } from '@muni-kypo-crp/user-and-group-model';
 import { MicroserviceCreateDTO } from '../DTO/microservice/microservice-create-dto.model';
 import { MicroserviceDTO } from '../DTO/microservice/microservice-dto';
 import { MicroserviceRoleDTO } from '../DTO/microservice/microservice-role-dto';

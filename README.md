@@ -13,7 +13,7 @@ You can override existing services by implementing the related abstract class an
 
 To use kypo-user-and-group-api in your application, follow these steps:
 
-1. Run `npm install @kypo/user-and-group-api`
+1. Run `npm install @muni-kypo-crp/user-and-group-api`
 2. Install peer dependencies
 3. Create an instance of `KypoUserAndGroupApiConfig`
 4. Import `KypoUserAndGroupApiModule` with config passed to `forRoot()` method

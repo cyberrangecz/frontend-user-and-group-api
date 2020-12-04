@@ -1,5 +1,5 @@
 import { PaginatedResource } from '@sentinel/common';
-import { User } from '@kypo/user-and-group-model';
+import { User } from '@muni-kypo-crp/user-and-group-model';
 import { RestResourceDTO } from '../DTO/rest-resource-dto.model';
 import { UserDTO } from '../DTO/user/user-dto.model';
 import { UserForGroupsDTO } from '../DTO/user/user-for-groups-dto.model';

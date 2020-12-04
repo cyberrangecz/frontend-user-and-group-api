@@ -1,5 +1,5 @@
 {
-  "name": "@kypo/user-and-group-api",
+  "name": "@muni-kypo-crp/user-and-group-api",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -33,8 +33,8 @@
     "@angular/platform-browser": "~10.0.0",
     "@angular/platform-browser-dynamic": "~10.0.0",
     "@angular/router": "~10.0.0",
-    "@sentinel/common": "~10.0.0",
-    "@kypo/user-and-group-model": "10.1.0",
+    "@sentinel/common": "~10.1.0",
+    "@muni-kypo-crp/user-and-group-model": "10.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

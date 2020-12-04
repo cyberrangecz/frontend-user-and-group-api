@@ -1,5 +1,5 @@
 import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
-import { Group, UserRole } from '@kypo/user-and-group-model';
+import { Group, UserRole } from '@muni-kypo-crp/user-and-group-model';
 import { Observable } from 'rxjs';
 
 export abstract class GroupApi {
