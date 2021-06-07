@@ -2,12 +2,12 @@
   "name": "@muni-kypo-crp/user-and-group-api",
   "version": "11.0.1",
   "peerDependencies": {
-    "@angular/common": "~11.0.8",
-    "@angular/core": "~11.0.8",
-    "@sentinel/common": "~11.0.1",
-    "@muni-kypo-crp/user-and-group-model": "~11.0.1"
+    "@angular/common": "~12.0.3",
+    "@angular/core": "~12.0.3",
+    "@sentinel/common": "~12.0.0",
+    "@muni-kypo-crp/user-and-group-model": "~12.0.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.2.0"
   }
 }
