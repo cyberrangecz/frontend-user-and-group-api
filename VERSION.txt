@@ -1,1 +1,2 @@
+12.0.2 Fix mapping of the undefined roles, new version of the Sentinel.
 12.0.1 Update gitlab CI

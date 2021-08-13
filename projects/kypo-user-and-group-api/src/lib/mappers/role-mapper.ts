@@ -18,8 +18,12 @@ export class RoleMapper {
     return new PaginatedResource(content, pagination);
   }
 
-  static mapRoleDTOsToRoles(dtos: RoleDTO[]): UserRole[] {
-    return dtos.map((dto) => this.mapRoleDTOToRole(dto));
+  static mapRoleDTOsToRoles(roleDtos: RoleDTO[]): UserRole[] {
+    if (roleDtos) {
+      return roleDtos.map((roleDto) => this.mapRoleDTOToRole(roleDto));
+    } else {
+      return [];
+    }
   }
 
   static mapRoleDTOToRole(dto: RoleDTO): UserRole {
