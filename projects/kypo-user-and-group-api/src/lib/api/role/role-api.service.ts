@@ -1,4 +1,4 @@
-import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
+import { SentinelFilter, PaginatedResource, OffsetPaginationEvent } from '@sentinel/common';
 import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,10 @@ export abstract class RoleApi {
    * @param pagination requested pagination
    * @param filters filters to be applied on roles
    */
-  abstract getAll(pagination: RequestedPagination, filters?: SentinelFilter[]): Observable<PaginatedResource<UserRole>>;
+  abstract getAll(
+    pagination: OffsetPaginationEvent,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<UserRole>>;
 
   /**
    * Sends http request to get role by id
@@ -27,7 +30,7 @@ export abstract class RoleApi {
    */
   abstract getUsersForRole(
     id: number,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<User>>;
 
@@ -39,7 +42,7 @@ export abstract class RoleApi {
    */
   abstract getUsersForRoleType(
     type: string,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<User>>;
 
@@ -53,7 +56,7 @@ export abstract class RoleApi {
   abstract getUsersNotWithIds(
     type: string,
     ids: number[],
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<User>>;
 }

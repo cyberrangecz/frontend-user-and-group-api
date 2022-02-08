@@ -1,12 +1,12 @@
-import { SentinelPagination } from '@sentinel/common';
+import { OffsetPagination } from '@sentinel/common';
 import { PaginationDTO } from '../DTO/pagination-dto.model';
 
 /**
  * @dynamic
  */
 export class PaginationMapper {
-  static mapDTOToPagination(paginationDTO: PaginationDTO): SentinelPagination {
-    return new SentinelPagination(
+  static mapDTOToPagination(paginationDTO: PaginationDTO): OffsetPagination {
+    return new OffsetPagination(
       paginationDTO.number,
       paginationDTO.number_of_elements,
       paginationDTO.size,

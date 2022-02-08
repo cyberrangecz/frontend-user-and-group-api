@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaginatedResource, SentinelFilter, SentinelParamsMerger, RequestedPagination } from '@sentinel/common';
+import { PaginatedResource, SentinelFilter, SentinelParamsMerger, OffsetPaginationEvent } from '@sentinel/common';
 import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -33,7 +33,7 @@ export class RoleDefaultApi extends RoleApi {
    * @param pagination requested pagination
    * @param filters filters to be applied on roles
    */
-  getAll(pagination: RequestedPagination, filters: SentinelFilter[] = []): Observable<PaginatedResource<UserRole>> {
+  getAll(pagination: OffsetPaginationEvent, filters: SentinelFilter[] = []): Observable<PaginatedResource<UserRole>> {
     const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filters),
@@ -61,7 +61,7 @@ export class RoleDefaultApi extends RoleApi {
    */
   getUsersForRole(
     id: number,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<User>> {
     const params = SentinelParamsMerger.merge([
@@ -83,7 +83,7 @@ export class RoleDefaultApi extends RoleApi {
    */
   getUsersForRoleType(
     type: string,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<User>> {
     const typeParam = new HttpParams().set('roleType', type);
@@ -109,7 +109,7 @@ export class RoleDefaultApi extends RoleApi {
   getUsersNotWithIds(
     type: string,
     ids: number[],
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filters?: SentinelFilter[]
   ): Observable<PaginatedResource<User>> {
     const idParams = new HttpParams().set('ids', ids.toString());
