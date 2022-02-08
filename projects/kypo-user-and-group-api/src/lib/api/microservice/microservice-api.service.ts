@@ -1,4 +1,4 @@
-import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
+import { SentinelFilter, PaginatedResource, OffsetPaginationEvent } from '@sentinel/common';
 import { Microservice } from '@muni-kypo-crp/user-and-group-model';
 import { Observable } from 'rxjs';
 
@@ -18,7 +18,7 @@ export abstract class MicroserviceApi {
    * @param filter filter to be applied on microservices
    */
   abstract getAll(
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filter?: SentinelFilter[]
   ): Observable<PaginatedResource<Microservice>>;
 }

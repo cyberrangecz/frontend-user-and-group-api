@@ -1,4 +1,4 @@
-import { SentinelFilter, PaginatedResource, RequestedPagination } from '@sentinel/common';
+import { SentinelFilter, PaginatedResource, OffsetPaginationEvent } from '@sentinel/common';
 import { Group, UserRole } from '@muni-kypo-crp/user-and-group-model';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ export abstract class GroupApi {
    * @param pagination requested pagination
    * @param filter filter to be applied on groups
    */
-  abstract getAll(pagination: RequestedPagination, filter?: SentinelFilter[]): Observable<PaginatedResource<Group>>;
+  abstract getAll(pagination: OffsetPaginationEvent, filter?: SentinelFilter[]): Observable<PaginatedResource<Group>>;
 
   /**
    * Sends http request to get group by id
@@ -63,7 +63,7 @@ export abstract class GroupApi {
    */
   abstract getRolesOfGroup(
     groupId: number,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filter?: SentinelFilter[]
   ): Observable<PaginatedResource<UserRole>>;
 

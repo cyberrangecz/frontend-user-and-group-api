@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SentinelParamsMerger, RequestedPagination, SentinelFilter, PaginatedResource } from '@sentinel/common';
+import { SentinelParamsMerger, OffsetPaginationEvent, SentinelFilter, PaginatedResource } from '@sentinel/common';
 import { Group, UserRole } from '@muni-kypo-crp/user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -35,7 +35,7 @@ export class GroupDefaultApi extends GroupApi {
    * @param pagination requested pagination
    * @param filter filter to be applied on groups
    */
-  getAll(pagination: RequestedPagination, filter: SentinelFilter[] = []): Observable<PaginatedResource<Group>> {
+  getAll(pagination: OffsetPaginationEvent, filter: SentinelFilter[] = []): Observable<PaginatedResource<Group>> {
     const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filter),
@@ -129,7 +129,7 @@ export class GroupDefaultApi extends GroupApi {
    */
   getRolesOfGroup(
     groupId: number,
-    pagination: RequestedPagination,
+    pagination: OffsetPaginationEvent,
     filter: SentinelFilter[] = []
   ): Observable<PaginatedResource<UserRole>> {
     const params = SentinelParamsMerger.merge([
