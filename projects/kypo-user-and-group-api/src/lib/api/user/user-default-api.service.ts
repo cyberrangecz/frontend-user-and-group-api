@@ -1,9 +1,15 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PaginatedResource, SentinelFilter, OffsetPaginationEvent, SentinelParamsMerger } from '@sentinel/common';
+import {
+  PaginatedResource,
+  SentinelFilter,
+  SentinelParamsMerger,
+  ResponseHeaderContentDispositionReader,
+  OffsetPaginationEvent,
+} from '@sentinel/common';
 import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { RestResourceDTO } from '../../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../../DTO/role/role-dto';
 import { UserDTO } from '../../DTO/user/user-dto.model';
@@ -14,6 +20,7 @@ import { KypoUserAndGroupContext } from '../../other/kypo-user-and-group.context
 import { FilterParams } from '../../utils/filter-params';
 import { PaginationHttpParams } from '../../utils/pagination-http-params';
 import { UserApi } from './user-api.service';
+import { FileSaver } from '../../utils/file-saver';
 
 /**
  * Default implementation of abstracting http communication with user endpoints
@@ -148,5 +155,30 @@ export class UserDefaultApi extends UserApi {
     return this.http
       .get<UserDTO>(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/info`)
       .pipe(map((resp) => UserMapper.mapUserDTOToUser(resp)));
+  }
+
+  /**
+   * Sends http request to get local OIDC users
+   */
+  getLocalOIDCUsers(): Observable<boolean> {
+    const headers = new HttpHeaders();
+    headers.set('Accept', ['application/octet-stream']);
+
+    return this.http
+      .get(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/initial-oidc-users`, {
+        responseType: 'blob',
+        observe: 'response',
+        headers,
+      })
+      .pipe(
+        catchError((err) => throwError(new HttpErrorResponse(err))),
+        map((resp: any) => {
+          FileSaver.fromBlob(
+            resp.body,
+            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'oidc_user_info.yml')
+          );
+          return true;
+        })
+      );
   }
 }

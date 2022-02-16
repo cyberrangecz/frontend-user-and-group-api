@@ -71,4 +71,9 @@ export abstract class UserApi {
    * Sends http request to get details of user who is logged in
    */
   abstract getUsersInfo(): Observable<User>;
+
+  /**
+   * Sends http request to get local OIDC users
+   */
+  abstract getLocalOIDCUsers(): Observable<boolean>;
 }
