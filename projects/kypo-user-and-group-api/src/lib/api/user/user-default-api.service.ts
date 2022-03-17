@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   PaginatedResource,
@@ -8,13 +8,14 @@ import {
   OffsetPaginationEvent,
 } from '@sentinel/common';
 import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { RestResourceDTO } from '../../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../../DTO/role/role-dto';
 import { UserDTO } from '../../DTO/user/user-dto.model';
 import { RoleMapper } from '../../mappers/role-mapper';
 import { UserMapper } from '../../mappers/user.mapper';
+import { JSONErrorConverter } from '../../utils/json-error-converter';
 import { KypoUserAndGroupApiConfig } from '../../other/kypo-user-and-group-api-config';
 import { KypoUserAndGroupContext } from '../../other/kypo-user-and-group.context.service';
 import { FilterParams } from '../../utils/filter-params';
@@ -171,8 +172,8 @@ export class UserDefaultApi extends UserApi {
         headers,
       })
       .pipe(
-        catchError((err) => throwError(new HttpErrorResponse(err))),
-        map((resp: any) => {
+        catchError((err) => JSONErrorConverter.fromBlob(err)),
+        map((resp) => {
           FileSaver.fromBlob(
             resp.body,
             ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'oidc_user_info.yml')
