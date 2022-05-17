@@ -8,7 +8,7 @@ import {
   OffsetPaginationEvent,
 } from '@sentinel/common';
 import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
-import { Observable } from 'rxjs';
+import { fromEvent, mergeMap, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { RestResourceDTO } from '../../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../../DTO/role/role-dto';
@@ -181,5 +181,17 @@ export class UserDefaultApi extends UserApi {
           return true;
         })
       );
+  }
+
+  importUsers(file: File): Observable<any> {
+    const fileReader = new FileReader();
+    const fileRead$ = fromEvent(fileReader, 'load').pipe(
+      mergeMap(() => {
+        const jsonBody = JSON.parse(fileReader.result as string);
+        return this.http.post<any>(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}`, jsonBody);
+      })
+    );
+    fileReader.readAsText(file);
+    return fileRead$;
   }
 }

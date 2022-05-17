@@ -76,4 +76,9 @@ export abstract class UserApi {
    * Sends http request to get local OIDC users
    */
   abstract getLocalOIDCUsers(): Observable<boolean>;
+
+  /**
+   * Sends http request to import users
+   */
+  abstract importUsers(file: File): Observable<any>;
 }
