@@ -25,14 +25,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~13.2.1",
-    "@angular/common": "~13.2.1",
-    "@angular/compiler": "~13.2.1",
-    "@angular/core": "~13.2.1",
-    "@angular/forms": "~13.2.1",
-    "@angular/platform-browser": "~13.2.1",
-    "@angular/platform-browser-dynamic": "~13.2.1",
-    "@angular/router": "~13.2.1",
+    "@angular/animations": "^14.0.3",
+    "@angular/common": "^14.0.3",
+    "@angular/compiler": "^14.0.3",
+    "@angular/core": "^14.0.3",
+    "@angular/forms": "^14.0.3",
+    "@angular/platform-browser": "^14.0.3",
+    "@angular/platform-browser-dynamic": "^14.0.3",
+    "@angular/router": "^14.0.3",
     "@sentinel/common": "~13.0.1",
     "@muni-kypo-crp/user-and-group-model": "~13.0.0",
     "file-saver": "^2.0.2",
@@ -41,11 +41,11 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1302.2",
-    "@angular-devkit/build-angular": "~13.2.2",
-    "@angular/cli": "~13.2.2",
-    "@angular/compiler-cli": "~13.2.1",
-    "@angular/language-service": "~13.2.1",
+    "@angular-devkit/architect": "^0.1400.2",
+    "@angular-devkit/build-angular": "^14.0.2",
+    "@angular/cli": "^14.0.2",
+    "@angular/compiler-cli": "^14.0.3",
+    "@angular/language-service": "^14.0.3",
     "@angular-eslint/builder": "~13.0.1",
     "@angular-eslint/eslint-plugin": "^13.0.1",
     "@angular-eslint/eslint-plugin-template": "^13.0.1",
@@ -65,10 +65,10 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "husky": "^4.2.5",
-    "ng-packagr": "^13.2.0",
+    "ng-packagr": "^14.0.2",
     "prettier": "^2.5.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
-    "typescript": "~4.5.5"
+    "typescript": "~4.7.4"
   }
 }
