@@ -40,6 +40,5 @@
         }
       }
     }
-  },
-  "defaultProject": "kypo-user-and-group-api"
+  }
 }
