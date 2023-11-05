@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { OffsetPaginationEvent } from '@sentinel/common';
+import { OffsetPaginationEvent } from '@sentinel/common/pagination';
 
 /**
  * Class transforming internal pagination to http params accepted by Trainings API

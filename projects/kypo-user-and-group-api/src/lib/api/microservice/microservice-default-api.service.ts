@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SentinelFilter, PaginatedResource, SentinelParamsMerger, OffsetPaginationEvent } from '@sentinel/common';
+import { SentinelParamsMerger } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
+import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
 import { Microservice } from '@muni-kypo-crp/user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
