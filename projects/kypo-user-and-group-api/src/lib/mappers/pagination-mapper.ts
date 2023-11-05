@@ -1,4 +1,4 @@
-import { OffsetPagination } from '@sentinel/common';
+import { OffsetPagination } from '@sentinel/common/pagination';
 import { PaginationDTO } from '../DTO/pagination-dto.model';
 
 /**

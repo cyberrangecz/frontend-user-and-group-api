@@ -1,4 +1,4 @@
-import { PaginatedResource } from '@sentinel/common';
+import { PaginatedResource } from '@sentinel/common/pagination';
 import { Group } from '@muni-kypo-crp/user-and-group-model';
 import { GroupDTO } from '../DTO/group/group-dto.model';
 import { CreateGroupDTO } from '../DTO/group/new-group-dto.model';

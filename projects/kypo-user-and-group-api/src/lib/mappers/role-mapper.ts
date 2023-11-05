@@ -1,4 +1,4 @@
-import { PaginatedResource } from '@sentinel/common';
+import { PaginatedResource } from '@sentinel/common/pagination';
 import { UserRole } from '@muni-kypo-crp/user-and-group-model';
 import { RestResourceDTO } from '../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../DTO/role/role-dto';

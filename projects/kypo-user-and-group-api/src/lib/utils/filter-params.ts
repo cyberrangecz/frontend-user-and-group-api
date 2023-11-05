@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { SentinelFilter } from '@sentinel/common';
+import { SentinelFilter } from '@sentinel/common/filter';
 
 /**
  * Class transforming internal filter to http params
