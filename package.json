@@ -34,7 +34,7 @@
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
     "@muni-kypo-crp/user-and-group-model": "~16.0.0",
-    "@sentinel/common": "~16.2.3",
+    "@sentinel/common": "~16.2.4",
     "file-saver": "^2.0.2",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
