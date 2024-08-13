@@ -1,3 +1,8 @@
+### 16.0.1 Update sentinel version.
+* 5368fa9 -- [CI/CD] Update packages.json version based on GitLab tag.
+* aea7f5d -- Merge branch 'develop' into 'master'
+* 0f6d99e -- Merge branch 'update-sentinel-versions' into 'develop'
+* f3b8dfa -- Update sentinel version
 ### 16.0.0 Update to Angular 16.
 * 3c18b1f -- [CI/CD] Update packages.json version based on GitLab tag.
 *   d01a366 -- Merge branch '26-update-to-angular-16' into 'master'
