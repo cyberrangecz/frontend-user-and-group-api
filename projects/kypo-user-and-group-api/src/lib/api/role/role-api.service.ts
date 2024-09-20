@@ -18,6 +18,18 @@ export abstract class RoleApi {
   ): Observable<PaginatedResource<UserRole>>;
 
   /**
+   * Sends http request to get roles not already assigned to group
+   * @param groupId id of group
+   * @param pagination requested pagination
+   * @param filters filters to be applied on roles
+   */
+  abstract getRolesNotInGroup(
+    groupId: number,
+    pagination: OffsetPaginationEvent,
+    filters?: SentinelFilter[]
+  ): Observable<PaginatedResource<UserRole>>;
+
+  /**
    * Sends http request to get role by id
    * @param id id of requested role
    */
