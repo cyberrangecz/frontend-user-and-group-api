@@ -35,7 +35,7 @@ export abstract class UserApi {
   abstract getUsersNotInGroup(
     groupId: number,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>>;
 
   /**
@@ -47,7 +47,7 @@ export abstract class UserApi {
   abstract getUsersInGroups(
     groupIds: number[],
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>>;
 
   /**

@@ -13,7 +13,7 @@ export class JSONErrorConverter {
         switchMap((errJSON) => {
           newError.error = errJSON;
           return throwError(new HttpErrorResponse(newError));
-        })
+        }),
       );
     }
     return throwError(new HttpErrorResponse(newError));

@@ -19,6 +19,11 @@
     "ci-publish-package": "cd dist/kypo-user-and-group-api && npm publish",
     "prepare": "husky"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-check"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.7",

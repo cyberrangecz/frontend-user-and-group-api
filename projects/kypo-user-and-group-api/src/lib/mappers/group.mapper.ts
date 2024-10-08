@@ -21,7 +21,7 @@ export class GroupMapper {
   static mapPaginatedGroupDTOsToGroups(restResource: RestResourceDTO<GroupDTO>): PaginatedResource<Group> {
     return new PaginatedResource<Group>(
       restResource.content.map((groupDTO) => this.mapGroupDTOToGroup(groupDTO)),
-      PaginationMapper.mapDTOToPagination(restResource.pagination)
+      PaginationMapper.mapDTOToPagination(restResource.pagination),
     );
   }
 

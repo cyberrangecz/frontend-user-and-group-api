@@ -27,7 +27,10 @@ export class UserDefaultApi extends UserApi {
   private readonly config: KypoUserAndGroupApiConfig;
   private readonly usersPathExtension = 'users';
 
-  constructor(private http: HttpClient, private context: KypoUserAndGroupContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoUserAndGroupContext,
+  ) {
     super();
     this.config = this.context.config;
   }
@@ -76,17 +79,16 @@ export class UserDefaultApi extends UserApi {
   getUsersNotInGroup(
     groupId: number,
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<User>> {
     const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filters),
     ]);
     return this.http
-      .get<RestResourceDTO<UserDTO>>(
-        `${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/not-in-groups/${groupId}`,
-        { params }
-      )
+      .get<
+        RestResourceDTO<UserDTO>
+      >(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/not-in-groups/${groupId}`, { params })
       .pipe(map((resp) => UserMapper.mapUserDTOsToUsers(resp)));
   }
 
@@ -99,7 +101,7 @@ export class UserDefaultApi extends UserApi {
   getUsersInGroups(
     groupIds: number[],
     pagination: OffsetPaginationEvent,
-    filters: SentinelFilter[] = []
+    filters: SentinelFilter[] = [],
   ): Observable<PaginatedResource<User>> {
     const idParams = new HttpParams().set('ids', groupIds.toString());
     const params = SentinelParamsMerger.merge([
@@ -172,10 +174,10 @@ export class UserDefaultApi extends UserApi {
         map((resp) => {
           FileSaver.fromBlob(
             resp.body,
-            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'oidc_user_info.yml')
+            ResponseHeaderContentDispositionReader.getFilenameFromResponse(resp, 'oidc_user_info.yml'),
           );
           return true;
-        })
+        }),
       );
   }
 
@@ -185,7 +187,7 @@ export class UserDefaultApi extends UserApi {
       mergeMap(() => {
         const jsonBody = JSON.parse(fileReader.result as string);
         return this.http.post<any>(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}`, jsonBody);
-      })
+      }),
     );
     fileReader.readAsText(file);
     return fileRead$;

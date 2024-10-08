@@ -17,7 +17,7 @@ export class UserMapper {
   static mapUserDTOsToUsers(restResource: RestResourceDTO<UserDTO>): PaginatedResource<User> {
     const result = new PaginatedResource<User>(
       restResource.content.map((userDTO) => this.mapUserDTOToUser(userDTO)),
-      PaginationMapper.mapDTOToPagination(restResource.pagination)
+      PaginationMapper.mapDTOToPagination(restResource.pagination),
     );
     return result;
   }

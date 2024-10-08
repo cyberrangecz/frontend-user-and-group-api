@@ -39,11 +39,11 @@ export class MicroserviceMapper {
    * @param microservice internal model to be mapped to dto
    */
   static mapMicroserviceDTOsToMicroservices(
-    restResource: RestResourceDTO<MicroserviceDTO>
+    restResource: RestResourceDTO<MicroserviceDTO>,
   ): PaginatedResource<Microservice> {
     const result = new PaginatedResource<Microservice>(
       restResource.content.map((microserviceDTO) => this.mapMicroserviceDTOToMicroservice(microserviceDTO)),
-      PaginationMapper.mapDTOToPagination(restResource.pagination)
+      PaginationMapper.mapDTOToPagination(restResource.pagination),
     );
     return result;
   }

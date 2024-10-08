@@ -25,7 +25,10 @@ export class RoleDefaultApi extends RoleApi {
   private readonly config: KypoUserAndGroupApiConfig;
   private readonly rolesPathExtension = 'roles';
 
-  constructor(private http: HttpClient, private context: KypoUserAndGroupContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoUserAndGroupContext,
+  ) {
     super();
     this.config = this.context.config;
   }
@@ -64,7 +67,7 @@ export class RoleDefaultApi extends RoleApi {
   getUsersForRole(
     id: number,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>> {
     const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
@@ -86,7 +89,7 @@ export class RoleDefaultApi extends RoleApi {
   getUsersForRoleType(
     type: string,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>> {
     const typeParam = new HttpParams().set('roleType', type);
     const params = SentinelParamsMerger.merge([
@@ -112,7 +115,7 @@ export class RoleDefaultApi extends RoleApi {
     type: string,
     ids: number[],
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>> {
     const idParams = new HttpParams().set('ids', ids.toString());
     const typeParam = new HttpParams().set('roleType', type);
@@ -123,10 +126,9 @@ export class RoleDefaultApi extends RoleApi {
       typeParam,
     ]);
     return this.http
-      .get<RestResourceDTO<UserDTO>>(
-        `${this.config.userAndGroupRestBasePath}${this.rolesPathExtension}/users-not-with-ids`,
-        { params }
-      )
+      .get<
+        RestResourceDTO<UserDTO>
+      >(`${this.config.userAndGroupRestBasePath}${this.rolesPathExtension}/users-not-with-ids`, { params })
       .pipe(map((resp) => UserMapper.mapUserDTOsToUsers(resp)));
   }
 }
