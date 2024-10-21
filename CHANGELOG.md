@@ -1,3 +1,8 @@
+### 16.0.2 Integrate endpoint for roles not already assigned to a group.
+* dd6179c -- [CI/CD] Update packages.json version based on GitLab tag.
+* 28ad294 -- Merge branch 'develop' into 'master'
+* 4d8160e -- Merge branch '27-add-endpoint-for-roles-not-already-assigned-to-group' into 'develop'
+* 1ca4de1 -- Integrate endpoint for roles not already assigned to a group
 ### 16.0.1 Update sentinel version.
 * 5368fa9 -- [CI/CD] Update packages.json version based on GitLab tag.
 * aea7f5d -- Merge branch 'develop' into 'master'
