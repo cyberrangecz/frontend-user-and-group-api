@@ -84,7 +84,7 @@ export class UserDefaultApi extends UserApi {
     ]);
     return this.http
       .get<RestResourceDTO<UserDTO>>(
-        `${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/not-in-groups/${groupId}`,
+        `${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/not-in-group/${groupId}`,
         { params }
       )
       .pipe(map((resp) => UserMapper.mapUserDTOsToUsers(resp)));
