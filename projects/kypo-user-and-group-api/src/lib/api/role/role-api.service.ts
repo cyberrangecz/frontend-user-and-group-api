@@ -14,7 +14,7 @@ export abstract class RoleApi {
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<UserRole>>;
 
   /**
@@ -26,7 +26,7 @@ export abstract class RoleApi {
   abstract getRolesNotInGroup(
     groupId: number,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<UserRole>>;
 
   /**
@@ -44,7 +44,7 @@ export abstract class RoleApi {
   abstract getUsersForRole(
     id: number,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>>;
 
   /**
@@ -56,7 +56,7 @@ export abstract class RoleApi {
   abstract getUsersForRoleType(
     type: string,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>>;
 
   /**
@@ -70,6 +70,6 @@ export abstract class RoleApi {
     type: string,
     ids: number[],
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<User>>;
 }

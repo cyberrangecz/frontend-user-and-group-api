@@ -49,7 +49,9 @@
           {
             "allowTemplateLiterals": true
           }
-        ]
+        ],
+        //TODO Remove this override once the issue is fixed
+        "@typescript-eslint/no-explicit-any": "warn"
       }
     },
     {

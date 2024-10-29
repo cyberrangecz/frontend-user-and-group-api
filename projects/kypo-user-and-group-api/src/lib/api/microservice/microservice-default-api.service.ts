@@ -23,7 +23,10 @@ import { MicroserviceApi } from './microservice-api.service';
 export class MicroserviceDefaultApi extends MicroserviceApi {
   private readonly config: KypoUserAndGroupApiConfig;
 
-  constructor(private http: HttpClient, private context: KypoUserAndGroupContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoUserAndGroupContext,
+  ) {
     super();
     this.config = this.context.config;
   }
@@ -36,7 +39,7 @@ export class MicroserviceDefaultApi extends MicroserviceApi {
     return this.http.post<MicroserviceCreateDTO>(
       `${this.config.userAndGroupRestBasePath}microservices`,
       JSON.stringify(MicroserviceMapper.mapMicroserviceToMicroserviceCreateDTO(microservice)),
-      { headers: this.createDefaultHeaders() }
+      { headers: this.createDefaultHeaders() },
     );
   }
 

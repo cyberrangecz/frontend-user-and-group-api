@@ -27,7 +27,10 @@ export class GroupDefaultApi extends GroupApi {
   private readonly usersPathExtension = 'users';
   private readonly rolesPathExtension = 'roles';
 
-  constructor(private http: HttpClient, private context: KypoUserAndGroupContext) {
+  constructor(
+    private http: HttpClient,
+    private context: KypoUserAndGroupContext,
+  ) {
     super();
     this.config = this.context.config;
   }
@@ -66,7 +69,7 @@ export class GroupDefaultApi extends GroupApi {
     return this.http
       .post<GroupDTO>(
         `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}`,
-        GroupMapper.mapGroupToCreateGroupDTO(group, groupsToImportFromId)
+        GroupMapper.mapGroupToCreateGroupDTO(group, groupsToImportFromId),
       )
       .pipe(map((groupDTO) => groupDTO.id));
   }
@@ -78,7 +81,7 @@ export class GroupDefaultApi extends GroupApi {
   update(group: Group): Observable<any> {
     return this.http.put(
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}`,
-      GroupMapper.mapGroupToUpdateGroupDTO(group)
+      GroupMapper.mapGroupToUpdateGroupDTO(group),
     );
   }
 
@@ -108,7 +111,7 @@ export class GroupDefaultApi extends GroupApi {
   assignRole(groupId: number, roleId: number): Observable<any> {
     return this.http.put(
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.rolesPathExtension}/${roleId}`,
-      {}
+      {},
     );
   }
 
@@ -119,7 +122,7 @@ export class GroupDefaultApi extends GroupApi {
    */
   removeRole(groupId: number, roleId: number): Observable<any> {
     return this.http.delete(
-      `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.rolesPathExtension}/${roleId}`
+      `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.rolesPathExtension}/${roleId}`,
     );
   }
 
@@ -132,17 +135,16 @@ export class GroupDefaultApi extends GroupApi {
   getRolesOfGroup(
     groupId: number,
     pagination: OffsetPaginationEvent,
-    filter: SentinelFilter[] = []
+    filter: SentinelFilter[] = [],
   ): Observable<PaginatedResource<UserRole>> {
     const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filter),
     ]);
     return this.http
-      .get<RestResourceDTO<RoleDTO>>(
-        `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.rolesPathExtension}`,
-        { params }
-      )
+      .get<
+        RestResourceDTO<RoleDTO>
+      >(`${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.rolesPathExtension}`, { params })
       .pipe(map((roleDTOs) => RoleMapper.mapPaginatedRolesDTOtoRoles(roleDTOs)));
   }
 
@@ -155,7 +157,7 @@ export class GroupDefaultApi extends GroupApi {
     return this.http.request(
       'delete',
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.usersPathExtension}`,
-      { body: userIds }
+      { body: userIds },
     );
   }
 
@@ -168,7 +170,7 @@ export class GroupDefaultApi extends GroupApi {
   addUsersToGroup(groupId: number, userIds: number[], groupIds: number[] = []): Observable<any> {
     return this.http.put(
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.usersPathExtension}`,
-      GroupMapper.createAddUsersToGroupDTO(userIds, groupIds)
+      GroupMapper.createAddUsersToGroupDTO(userIds, groupIds),
     );
   }
 }

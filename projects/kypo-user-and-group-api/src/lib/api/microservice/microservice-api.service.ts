@@ -20,6 +20,6 @@ export abstract class MicroserviceApi {
    */
   abstract getAll(
     pagination: OffsetPaginationEvent,
-    filter?: SentinelFilter[]
+    filter?: SentinelFilter[],
   ): Observable<PaginatedResource<Microservice>>;
 }

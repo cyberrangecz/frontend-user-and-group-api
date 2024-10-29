@@ -65,7 +65,7 @@ export abstract class GroupApi {
   abstract getRolesOfGroup(
     groupId: number,
     pagination: OffsetPaginationEvent,
-    filter?: SentinelFilter[]
+    filter?: SentinelFilter[],
   ): Observable<PaginatedResource<UserRole>>;
 
   /**
