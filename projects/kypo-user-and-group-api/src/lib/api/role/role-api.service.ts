@@ -26,7 +26,7 @@ export abstract class RoleApi {
   abstract getRolesNotInGroup(
     groupId: number,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<UserRole>>;
 
   /**

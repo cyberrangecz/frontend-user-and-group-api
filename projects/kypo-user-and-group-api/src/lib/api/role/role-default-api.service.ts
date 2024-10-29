@@ -57,17 +57,16 @@ export class RoleDefaultApi extends RoleApi {
   getRolesNotInGroup(
     groupId: number,
     pagination: OffsetPaginationEvent,
-    filters?: SentinelFilter[]
+    filters?: SentinelFilter[],
   ): Observable<PaginatedResource<UserRole>> {
     const params = SentinelParamsMerger.merge([
       PaginationHttpParams.createPaginationParams(pagination),
       FilterParams.create(filters),
     ]);
     return this.http
-      .get<RestResourceDTO<RoleDTO>>(
-        `${this.config.userAndGroupRestBasePath}${this.rolesPathExtension}/not-in-group/${groupId}`,
-        { params }
-      )
+      .get<
+        RestResourceDTO<RoleDTO>
+      >(`${this.config.userAndGroupRestBasePath}${this.rolesPathExtension}/not-in-group/${groupId}`, { params })
       .pipe(map((resp) => RoleMapper.mapPaginatedRolesDTOtoRoles(resp)));
   }
 
