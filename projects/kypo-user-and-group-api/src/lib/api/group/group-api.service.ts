@@ -1,6 +1,6 @@
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
-import { Group, UserRole } from '@muni-kypo-crp/user-and-group-model';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
+import { Group, UserRole } from '@cyberrangecz-platform/user-and-group-model';
 import { Observable } from 'rxjs';
 
 export abstract class GroupApi {
@@ -28,33 +28,33 @@ export abstract class GroupApi {
    * Sends http request to update existing group
    * @param group group to update
    */
-  abstract update(group: Group): Observable<any>;
+  abstract update(group: Group): Observable<object>;
 
   /**
    * Sends http request to delete multiple groups
    * @param groupIds ids of groups to delete
    */
-  abstract deleteMultiple(groupIds: number[]): Observable<any>;
+  abstract deleteMultiple(groupIds: number[]): Observable<object>;
 
   /**
    * Sends http request to delete group
    * @param groupId id of a group to delete
    */
-  abstract delete(groupId: number): Observable<any>;
+  abstract delete(groupId: number): Observable<object>;
 
   /**
    * Sends http request to assign role to group
    * @param groupId id of a group to be associated with a role
    * @param roleId id of a role to be assigned to a group
    */
-  abstract assignRole(groupId: number, roleId: number): Observable<any>;
+  abstract assignRole(groupId: number, roleId: number): Observable<object>;
 
   /**
    * Sends http request to remove role from group
    * @param groupId id of group which associated with a role should be cancelled
    * @param roleId id of a role to be removed from group
    */
-  abstract removeRole(groupId: number, roleId: number): Observable<any>;
+  abstract removeRole(groupId: number, roleId: number): Observable<object>;
 
   /**
    * Sends http request to get all roles of a group
@@ -73,7 +73,7 @@ export abstract class GroupApi {
    * @param groupId id of a group associated with users
    * @param userIds ids of users to be removed from a group
    */
-  abstract removeUsersFromGroup(groupId: number, userIds: number[]): Observable<any>;
+  abstract removeUsersFromGroup(groupId: number, userIds: number[]): Observable<object>;
 
   /**
    * Sends http request to add users to a group
@@ -81,5 +81,5 @@ export abstract class GroupApi {
    * @param userIds ids of users to be added to the group
    * @param groupIds ids of a groups from where users should be imported
    */
-  abstract addUsersToGroup(groupId: number, userIds: number[], groupIds?: number[]): Observable<any>;
+  abstract addUsersToGroup(groupId: number, userIds: number[], groupIds?: number[]): Observable<object>;
 }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
 import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
-import { Group, UserRole } from '@muni-kypo-crp/user-and-group-model';
+import { Group, UserRole } from '@cyberrangecz-platform/user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GroupDTO } from '../../DTO/group/group-dto.model';
@@ -78,7 +78,7 @@ export class GroupDefaultApi extends GroupApi {
    * Sends http request to update existing group
    * @param group group to update
    */
-  update(group: Group): Observable<any> {
+  update(group: Group): Observable<object> {
     return this.http.put(
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}`,
       GroupMapper.mapGroupToUpdateGroupDTO(group),
@@ -89,7 +89,7 @@ export class GroupDefaultApi extends GroupApi {
    * Sends http request to delete multiple groups
    * @param groupIds ids of groups to delete
    */
-  deleteMultiple(groupIds: number[]): Observable<any> {
+  deleteMultiple(groupIds: number[]): Observable<object> {
     return this.http.request('delete', this.config.userAndGroupRestBasePath + this.groupsPathExtension, {
       body: groupIds,
     });
@@ -99,7 +99,7 @@ export class GroupDefaultApi extends GroupApi {
    * Sends http request to delete group
    * @param groupId id of a group to delete
    */
-  delete(groupId: number): Observable<any> {
+  delete(groupId: number): Observable<object> {
     return this.http.delete(`${this.config.userAndGroupRestBasePath + this.groupsPathExtension}${groupId}`);
   }
 
@@ -108,7 +108,7 @@ export class GroupDefaultApi extends GroupApi {
    * @param groupId id of a group to be associated with a role
    * @param roleId id of a role to be assigned to a group
    */
-  assignRole(groupId: number, roleId: number): Observable<any> {
+  assignRole(groupId: number, roleId: number): Observable<object> {
     return this.http.put(
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.rolesPathExtension}/${roleId}`,
       {},
@@ -120,7 +120,7 @@ export class GroupDefaultApi extends GroupApi {
    * @param groupId id of group which associated with a role should be cancelled
    * @param roleId id of a role to be removed from group
    */
-  removeRole(groupId: number, roleId: number): Observable<any> {
+  removeRole(groupId: number, roleId: number): Observable<object> {
     return this.http.delete(
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.rolesPathExtension}/${roleId}`,
     );
@@ -153,7 +153,7 @@ export class GroupDefaultApi extends GroupApi {
    * @param groupId id of a group associated with users
    * @param userIds ids of users to be removed from a group
    */
-  removeUsersFromGroup(groupId: number, userIds: number[]): Observable<any> {
+  removeUsersFromGroup(groupId: number, userIds: number[]): Observable<object> {
     return this.http.request(
       'delete',
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.usersPathExtension}`,
@@ -167,7 +167,7 @@ export class GroupDefaultApi extends GroupApi {
    * @param userIds ids of users to be added to the group
    * @param groupIds ids of a groups from where users should be imported
    */
-  addUsersToGroup(groupId: number, userIds: number[], groupIds: number[] = []): Observable<any> {
+  addUsersToGroup(groupId: number, userIds: number[], groupIds: number[] = []): Observable<object> {
     return this.http.put(
       `${this.config.userAndGroupRestBasePath}${this.groupsPathExtension}/${groupId}/${this.usersPathExtension}`,
       GroupMapper.createAddUsersToGroupDTO(userIds, groupIds),

@@ -6,7 +6,7 @@ import { switchMap } from 'rxjs/operators';
  * Util class to parse blob HttpErrorResponse to json (workaround for https://github.com/angular/angular/issues/19888)
  */
 export class JSONErrorConverter {
-  static fromBlob(err: any): Observable<never> {
+  static fromBlob<T extends { error: unknown }>(err: T): Observable<never> {
     const newError = { ...err };
     if (err.error instanceof Blob) {
       return JSONErrorConverter.readBlobAsJSON(err.error).pipe(
@@ -30,7 +30,7 @@ export class JSONErrorConverter {
     });
   }
 
-  static fromText(err: any): Observable<never> {
+  static fromText<T extends { error: string }>(err: T): Observable<never> {
     const newError = { ...err };
     newError.error = JSON.parse(err.error);
     return throwError(new HttpErrorResponse(newError));

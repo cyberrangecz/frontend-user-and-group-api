@@ -1,6 +1,6 @@
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
+import { User, UserRole } from '@cyberrangecz-platform/user-and-group-model';
 import { Observable } from 'rxjs';
 
 /**
@@ -24,7 +24,7 @@ export abstract class UserApi {
    * Sends http request to delete multiple users
    * @param userIds ids of users to delete
    */
-  abstract deleteMultiple(userIds: number[]): Observable<any>;
+  abstract deleteMultiple(userIds: number[]): Observable<object>;
 
   /**
    * Sends http request to get users that are not members of provided group
@@ -54,7 +54,7 @@ export abstract class UserApi {
    * Sends http request to delete user
    * @param userId id of user to delete
    */
-  abstract delete(userId: number): Observable<any>;
+  abstract delete(userId: number): Observable<object>;
 
   /**
    * Sends http request to get roles for given user id
@@ -81,5 +81,5 @@ export abstract class UserApi {
   /**
    * Sends http request to import users
    */
-  abstract importUsers(file: File): Observable<any>;
+  abstract importUsers(file: File): Observable<object>;
 }

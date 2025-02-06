@@ -1,6 +1,6 @@
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
+import { User, UserRole } from '@cyberrangecz-platform/user-and-group-model';
 import { Observable } from 'rxjs';
 
 /**

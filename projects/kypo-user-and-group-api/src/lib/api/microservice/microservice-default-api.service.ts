@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
-import { Microservice } from '@muni-kypo-crp/user-and-group-model';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
+import { Microservice } from '@cyberrangecz-platform/user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MicroserviceCreateDTO } from '../../DTO/microservice/microservice-create-dto.model';
@@ -35,7 +35,7 @@ export class MicroserviceDefaultApi extends MicroserviceApi {
    * Creates new microservice
    * @param microservice microservice to be created
    */
-  create(microservice: Microservice): Observable<any> {
+  create(microservice: Microservice): Observable<MicroserviceCreateDTO> {
     return this.http.post<MicroserviceCreateDTO>(
       `${this.config.userAndGroupRestBasePath}microservices`,
       JSON.stringify(MicroserviceMapper.mapMicroserviceToMicroserviceCreateDTO(microservice)),

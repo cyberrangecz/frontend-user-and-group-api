@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SentinelParamsMerger, ResponseHeaderContentDispositionReader } from '@sentinel/common';
-import { PaginatedResource, OffsetPaginationEvent } from '@sentinel/common/pagination';
+import { ResponseHeaderContentDispositionReader, SentinelParamsMerger } from '@sentinel/common';
+import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
 import { SentinelFilter } from '@sentinel/common/filter';
-import { User, UserRole } from '@muni-kypo-crp/user-and-group-model';
+import { User, UserRole } from '@cyberrangecz-platform/user-and-group-model';
 import { fromEvent, mergeMap, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { RestResourceDTO } from '../../DTO/rest-resource-dto.model';
@@ -64,7 +64,7 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to delete multiple users
    * @param userIds ids of users to delete
    */
-  deleteMultiple(userIds: number[]): Observable<any> {
+  deleteMultiple(userIds: number[]): Observable<object> {
     return this.http.request('delete', `${this.config.userAndGroupRestBasePath}${this.usersPathExtension}`, {
       body: userIds,
     });
@@ -120,7 +120,7 @@ export class UserDefaultApi extends UserApi {
    * Sends http request to delete user
    * @param userId id of user to delete
    */
-  delete(userId: number): Observable<any> {
+  delete(userId: number): Observable<object> {
     return this.http.delete(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/${userId}`);
   }
 
@@ -181,12 +181,12 @@ export class UserDefaultApi extends UserApi {
       );
   }
 
-  importUsers(file: File): Observable<any> {
+  importUsers(file: File): Observable<object> {
     const fileReader = new FileReader();
     const fileRead$ = fromEvent(fileReader, 'load').pipe(
       mergeMap(() => {
         const jsonBody = JSON.parse(fileReader.result as string);
-        return this.http.post<any>(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}`, jsonBody);
+        return this.http.post<object>(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}`, jsonBody);
       }),
     );
     fileReader.readAsText(file);
