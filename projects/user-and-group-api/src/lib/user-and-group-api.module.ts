@@ -8,30 +8,30 @@ import { RoleApi } from './api/role/role-api.service';
 import { RoleDefaultApi } from './api/role/role-default-api.service';
 import { UserApi } from './api/user/user-api.service';
 import { UserDefaultApi } from './api/user/user-default-api.service';
-import { KypoUserAndGroupApiConfig } from './other/kypo-user-and-group-api-config';
-import { KypoUserAndGroupContext } from './other/kypo-user-and-group.context.service';
+import { UserAndGroupApiConfig } from './other/user-and-group-api-config';
+import { UserAndGroupContext } from './other/user-and-group.context.service';
 
 @NgModule({
   imports: [CommonModule],
   providers: [
-    KypoUserAndGroupContext,
+    UserAndGroupContext,
     { provide: UserApi, useClass: UserDefaultApi },
     { provide: GroupApi, useClass: GroupDefaultApi },
     { provide: MicroserviceApi, useClass: MicroserviceDefaultApi },
     { provide: RoleApi, useClass: RoleDefaultApi },
   ],
 })
-export class KypoUserAndGroupApiModule {
-  constructor(@Optional() @SkipSelf() parentModule: KypoUserAndGroupApiModule) {
+export class UserAndGroupApiModule {
+  constructor(@Optional() @SkipSelf() parentModule: UserAndGroupApiModule) {
     if (parentModule) {
-      throw new Error('KypoUserAndGroupApiModule is already loaded. Import it only once in single module hierarchy.');
+      throw new Error('UserAndGroupApiModule is already loaded. Import it only once in single module hierarchy.');
     }
   }
 
-  static forRoot(config: KypoUserAndGroupApiConfig): ModuleWithProviders<KypoUserAndGroupApiModule> {
+  static forRoot(config: UserAndGroupApiConfig): ModuleWithProviders<UserAndGroupApiModule> {
     return {
-      ngModule: KypoUserAndGroupApiModule,
-      providers: [{ provide: KypoUserAndGroupApiConfig, useValue: config }],
+      ngModule: UserAndGroupApiModule,
+      providers: [{ provide: UserAndGroupApiConfig, useValue: config }],
     };
   }
 }

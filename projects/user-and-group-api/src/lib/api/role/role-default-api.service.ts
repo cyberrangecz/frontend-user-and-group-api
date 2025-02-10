@@ -11,8 +11,8 @@ import { RoleDTO } from '../../DTO/role/role-dto';
 import { UserDTO } from '../../DTO/user/user-dto.model';
 import { RoleMapper } from '../../mappers/role-mapper';
 import { UserMapper } from '../../mappers/user.mapper';
-import { KypoUserAndGroupApiConfig } from '../../other/kypo-user-and-group-api-config';
-import { KypoUserAndGroupContext } from '../../other/kypo-user-and-group.context.service';
+import { UserAndGroupApiConfig } from '../../other/user-and-group-api-config';
+import { UserAndGroupContext } from '../../other/user-and-group.context.service';
 import { FilterParams } from '../../utils/filter-params';
 import { PaginationHttpParams } from '../../utils/pagination-http-params';
 import { RoleApi } from './role-api.service';
@@ -22,12 +22,12 @@ import { RoleApi } from './role-api.service';
  */
 @Injectable()
 export class RoleDefaultApi extends RoleApi {
-  private readonly config: KypoUserAndGroupApiConfig;
+  private readonly config: UserAndGroupApiConfig;
   private readonly rolesPathExtension = 'roles';
 
   constructor(
     private http: HttpClient,
-    private context: KypoUserAndGroupContext,
+    private context: UserAndGroupContext,
   ) {
     super();
     this.config = this.context.config;

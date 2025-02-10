@@ -19,8 +19,8 @@
         ],
         "paths": {
             "kypo-user-and-group-api": [
-                "dist/kypo-user-and-group-api/kypo-user-and-group-api",
-                "dist/kypo-user-and-group-api"
+                "dist/user-and-group-api/user-and-group-api",
+                "dist/user-and-group-api"
             ]
         },
         "useDefineForClassFields": false

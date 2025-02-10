@@ -3,38 +3,38 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "kypo-user-and-group-api": {
+        "user-and-group-api": {
             "projectType": "library",
-            "root": "projects/kypo-user-and-group-api",
-            "sourceRoot": "projects/kypo-user-and-group-api/src",
-            "prefix": "kypo",
+            "root": "projects/user-and-group-api",
+            "sourceRoot": "projects/user-and-group-api/src",
+            "prefix": "crczp",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
-                        "tsConfig": "projects/kypo-user-and-group-api/tsconfig.lib.json",
-                        "project": "projects/kypo-user-and-group-api/ng-package.json"
+                        "tsConfig": "projects/user-and-group-api/tsconfig.lib.json",
+                        "project": "projects/user-and-group-api/ng-package.json"
                     },
                     "configurations": {
                         "production": {
-                            "tsConfig": "projects/kypo-user-and-group-api/tsconfig.lib.prod.json"
+                            "tsConfig": "projects/user-and-group-api/tsconfig.lib.prod.json"
                         }
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/kypo-user-and-group-api/src/test.ts",
-                        "tsConfig": "projects/kypo-user-and-group-api/tsconfig.spec.json",
-                        "karmaConfig": "projects/kypo-user-and-group-api/karma.conf.js"
+                        "main": "projects/user-and-group-api/src/test.ts",
+                        "tsConfig": "projects/user-and-group-api/tsconfig.spec.json",
+                        "karmaConfig": "projects/user-and-group-api/karma.conf.js"
                     }
                 },
                 "lint": {
                     "builder": "@angular-eslint/builder:lint",
                     "options": {
                         "lintFilePatterns": [
-                            "projects/kypo-user-and-group-api/**/*.ts",
-                            "projects/kypo-user-and-group-api/**/*.component.html"
+                            "projects/user-and-group-api/**/*.ts",
+                            "projects/user-and-group-api/**/*.component.html"
                         ]
                     }
                 }

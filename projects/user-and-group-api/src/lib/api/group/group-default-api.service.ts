@@ -11,8 +11,8 @@ import { RestResourceDTO } from '../../DTO/rest-resource-dto.model';
 import { RoleDTO } from '../../DTO/role/role-dto';
 import { GroupMapper } from '../../mappers/group.mapper';
 import { RoleMapper } from '../../mappers/role-mapper';
-import { KypoUserAndGroupApiConfig } from '../../other/kypo-user-and-group-api-config';
-import { KypoUserAndGroupContext } from '../../other/kypo-user-and-group.context.service';
+import { UserAndGroupApiConfig } from '../../other/user-and-group-api-config';
+import { UserAndGroupContext } from '../../other/user-and-group.context.service';
 import { FilterParams } from '../../utils/filter-params';
 import { PaginationHttpParams } from '../../utils/pagination-http-params';
 import { GroupApi } from './group-api.service';
@@ -22,14 +22,14 @@ import { GroupApi } from './group-api.service';
  */
 @Injectable()
 export class GroupDefaultApi extends GroupApi {
-  private readonly config: KypoUserAndGroupApiConfig;
+  private readonly config: UserAndGroupApiConfig;
   private readonly groupsPathExtension = 'groups';
   private readonly usersPathExtension = 'users';
   private readonly rolesPathExtension = 'roles';
 
   constructor(
     private http: HttpClient,
-    private context: KypoUserAndGroupContext,
+    private context: UserAndGroupContext,
   ) {
     super();
     this.config = this.context.config;

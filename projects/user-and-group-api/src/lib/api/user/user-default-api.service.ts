@@ -12,8 +12,8 @@ import { UserDTO } from '../../DTO/user/user-dto.model';
 import { RoleMapper } from '../../mappers/role-mapper';
 import { UserMapper } from '../../mappers/user.mapper';
 import { JSONErrorConverter } from '../../utils/json-error-converter';
-import { KypoUserAndGroupApiConfig } from '../../other/kypo-user-and-group-api-config';
-import { KypoUserAndGroupContext } from '../../other/kypo-user-and-group.context.service';
+import { UserAndGroupApiConfig } from '../../other/user-and-group-api-config';
+import { UserAndGroupContext } from '../../other/user-and-group.context.service';
 import { FilterParams } from '../../utils/filter-params';
 import { PaginationHttpParams } from '../../utils/pagination-http-params';
 import { UserApi } from './user-api.service';
@@ -24,12 +24,12 @@ import { FileSaver } from '../../utils/file-saver';
  */
 @Injectable()
 export class UserDefaultApi extends UserApi {
-  private readonly config: KypoUserAndGroupApiConfig;
+  private readonly config: UserAndGroupApiConfig;
   private readonly usersPathExtension = 'users';
 
   constructor(
     private http: HttpClient,
-    private context: KypoUserAndGroupContext,
+    private context: UserAndGroupContext,
   ) {
     super();
     this.config = this.context.config;

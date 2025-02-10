@@ -10,8 +10,8 @@ import { MicroserviceCreateDTO } from '../../DTO/microservice/microservice-creat
 import { MicroserviceDTO } from '../../DTO/microservice/microservice-dto';
 import { RestResourceDTO } from '../../DTO/rest-resource-dto.model';
 import { MicroserviceMapper } from '../../mappers/microservice.mapper';
-import { KypoUserAndGroupApiConfig } from '../../other/kypo-user-and-group-api-config';
-import { KypoUserAndGroupContext } from '../../other/kypo-user-and-group.context.service';
+import { UserAndGroupApiConfig } from '../../other/user-and-group-api-config';
+import { UserAndGroupContext } from '../../other/user-and-group.context.service';
 import { FilterParams } from '../../utils/filter-params';
 import { PaginationHttpParams } from '../../utils/pagination-http-params';
 import { MicroserviceApi } from './microservice-api.service';
@@ -21,11 +21,11 @@ import { MicroserviceApi } from './microservice-api.service';
  */
 @Injectable()
 export class MicroserviceDefaultApi extends MicroserviceApi {
-  private readonly config: KypoUserAndGroupApiConfig;
+  private readonly config: UserAndGroupApiConfig;
 
   constructor(
     private http: HttpClient,
-    private context: KypoUserAndGroupContext,
+    private context: UserAndGroupContext,
   ) {
     super();
     this.config = this.context.config;
