@@ -1,11 +1,11 @@
 {
     "name": "@cyberrangecz-platform/user-and-group-api",
-    "version": "16.0.2",
+    "version": "0.0.1",
     "peerDependencies": {
         "@angular/common": "^18.2.13",
         "@angular/core": "^18.2.13",
         "@sentinel/common": "^18.0.4",
-        "@cyberrangecz-platform/user-and-group-model": "^18.0.0"
+        "@cyberrangecz-platform/user-and-group-model": "0.0.1","
     },
     "dependencies": {
         "tslib": "^2.7.0"

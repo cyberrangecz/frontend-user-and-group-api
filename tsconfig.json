@@ -18,7 +18,7 @@
             "dom"
         ],
         "paths": {
-            "kypo-user-and-group-api": [
+            "user-and-group-api": [
                 "dist/user-and-group-api/user-and-group-api",
                 "dist/user-and-group-api"
             ]
