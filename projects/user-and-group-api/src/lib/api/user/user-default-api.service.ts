@@ -66,7 +66,7 @@ export class UserDefaultApi extends UserApi {
      * Sends http request to delete multiple users
      * @param userIds ids of users to delete
      */
-    deleteMultiple(userIds: number[]): Observable<object> {
+    deleteMultiple(userIds: number[]): Observable<any> {
         return this.http.request('delete', `${this.config.userAndGroupRestBasePath}${this.usersPathExtension}`, {
             body: userIds,
         });
@@ -122,7 +122,7 @@ export class UserDefaultApi extends UserApi {
      * Sends http request to delete user
      * @param userId id of user to delete
      */
-    delete(userId: number): Observable<object> {
+    delete(userId: number): Observable<any> {
         return this.http.delete(`${this.config.userAndGroupRestBasePath}${this.usersPathExtension}/${userId}`);
     }
 
@@ -185,12 +185,12 @@ export class UserDefaultApi extends UserApi {
             );
     }
 
-    importUsers(file: File): Observable<object> {
+    importUsers(file: File): Observable<any> {
         const fileReader = new FileReader();
         const fileRead$ = fromEvent(fileReader, 'load').pipe(
             mergeMap(() => {
                 const jsonBody = JSON.parse(fileReader.result as string);
-                return this.http.post<object>(
+                return this.http.post<any>(
                     `${this.config.userAndGroupRestBasePath}${this.usersPathExtension}`,
                     jsonBody,
                 );
