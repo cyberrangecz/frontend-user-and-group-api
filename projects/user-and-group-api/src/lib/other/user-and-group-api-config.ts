@@ -1,3 +1,3 @@
 export class UserAndGroupApiConfig {
-  userAndGroupRestBasePath: string;
+    userAndGroupRestBasePath: string;
 }

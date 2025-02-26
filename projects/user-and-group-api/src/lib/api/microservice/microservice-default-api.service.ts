@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { SentinelParamsMerger } from '@sentinel/common';
 import { SentinelFilter } from '@sentinel/common/filter';
 import { OffsetPaginationEvent, PaginatedResource } from '@sentinel/common/pagination';
-import { Microservice } from '@cyberrangecz-platform/user-and-group-model';
+import { Microservice } from '@crczp/user-and-group-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MicroserviceCreateDTO } from '../../DTO/microservice/microservice-create-dto.model';
@@ -21,46 +21,46 @@ import { MicroserviceApi } from './microservice-api.service';
  */
 @Injectable()
 export class MicroserviceDefaultApi extends MicroserviceApi {
-  private readonly config: UserAndGroupApiConfig;
+    private readonly config: UserAndGroupApiConfig;
 
-  constructor(
-    private http: HttpClient,
-    private context: UserAndGroupContext,
-  ) {
-    super();
-    this.config = this.context.config;
-  }
+    constructor(
+        private http: HttpClient,
+        private context: UserAndGroupContext,
+    ) {
+        super();
+        this.config = this.context.config;
+    }
 
-  /**
-   * Creates new microservice
-   * @param microservice microservice to be created
-   */
-  create(microservice: Microservice): Observable<MicroserviceCreateDTO> {
-    return this.http.post<MicroserviceCreateDTO>(
-      `${this.config.userAndGroupRestBasePath}microservices`,
-      JSON.stringify(MicroserviceMapper.mapMicroserviceToMicroserviceCreateDTO(microservice)),
-      { headers: this.createDefaultHeaders() },
-    );
-  }
+    /**
+     * Creates new microservice
+     * @param microservice microservice to be created
+     */
+    create(microservice: Microservice): Observable<MicroserviceCreateDTO> {
+        return this.http.post<MicroserviceCreateDTO>(
+            `${this.config.userAndGroupRestBasePath}microservices`,
+            JSON.stringify(MicroserviceMapper.mapMicroserviceToMicroserviceCreateDTO(microservice)),
+            { headers: this.createDefaultHeaders() },
+        );
+    }
 
-  private createDefaultHeaders() {
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-  }
+    private createDefaultHeaders() {
+        return new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+    }
 
-  /**
-   * Sends http request to get paginated microservices
-   * @param pagination requested pagination
-   * @param filter filter to be applied on microservices
-   */
-  getAll(pagination: OffsetPaginationEvent, filter?: SentinelFilter[]): Observable<PaginatedResource<Microservice>> {
-    const params = SentinelParamsMerger.merge([
-      PaginationHttpParams.createPaginationParams(pagination),
-      FilterParams.create(filter),
-    ]);
-    return this.http
-      .get<RestResourceDTO<MicroserviceDTO>>(`${this.config.userAndGroupRestBasePath}microservices`, { params })
-      .pipe(map((resp) => MicroserviceMapper.mapMicroserviceDTOsToMicroservices(resp)));
-  }
+    /**
+     * Sends http request to get paginated microservices
+     * @param pagination requested pagination
+     * @param filter filter to be applied on microservices
+     */
+    getAll(pagination: OffsetPaginationEvent, filter?: SentinelFilter[]): Observable<PaginatedResource<Microservice>> {
+        const params = SentinelParamsMerger.merge([
+            PaginationHttpParams.createPaginationParams(pagination),
+            FilterParams.create(filter),
+        ]);
+        return this.http
+            .get<RestResourceDTO<MicroserviceDTO>>(`${this.config.userAndGroupRestBasePath}microservices`, { params })
+            .pipe(map((resp) => MicroserviceMapper.mapMicroserviceDTOsToMicroservices(resp)));
+    }
 }

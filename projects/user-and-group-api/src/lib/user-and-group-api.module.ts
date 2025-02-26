@@ -12,26 +12,26 @@ import { UserAndGroupApiConfig } from './other/user-and-group-api-config';
 import { UserAndGroupContext } from './other/user-and-group.context.service';
 
 @NgModule({
-  imports: [CommonModule],
-  providers: [
-    UserAndGroupContext,
-    { provide: UserApi, useClass: UserDefaultApi },
-    { provide: GroupApi, useClass: GroupDefaultApi },
-    { provide: MicroserviceApi, useClass: MicroserviceDefaultApi },
-    { provide: RoleApi, useClass: RoleDefaultApi },
-  ],
+    imports: [CommonModule],
+    providers: [
+        UserAndGroupContext,
+        { provide: UserApi, useClass: UserDefaultApi },
+        { provide: GroupApi, useClass: GroupDefaultApi },
+        { provide: MicroserviceApi, useClass: MicroserviceDefaultApi },
+        { provide: RoleApi, useClass: RoleDefaultApi },
+    ],
 })
 export class UserAndGroupApiModule {
-  constructor(@Optional() @SkipSelf() parentModule: UserAndGroupApiModule) {
-    if (parentModule) {
-      throw new Error('UserAndGroupApiModule is already loaded. Import it only once in single module hierarchy.');
+    constructor(@Optional() @SkipSelf() parentModule: UserAndGroupApiModule) {
+        if (parentModule) {
+            throw new Error('UserAndGroupApiModule is already loaded. Import it only once in single module hierarchy.');
+        }
     }
-  }
 
-  static forRoot(config: UserAndGroupApiConfig): ModuleWithProviders<UserAndGroupApiModule> {
-    return {
-      ngModule: UserAndGroupApiModule,
-      providers: [{ provide: UserAndGroupApiConfig, useValue: config }],
-    };
-  }
+    static forRoot(config: UserAndGroupApiConfig): ModuleWithProviders<UserAndGroupApiModule> {
+        return {
+            ngModule: UserAndGroupApiModule,
+            providers: [{ provide: UserAndGroupApiConfig, useValue: config }],
+        };
+    }
 }

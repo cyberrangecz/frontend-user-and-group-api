@@ -1,14 +1,14 @@
 # CyberRangeᶜᶻ Platform User and Group API
 
 This library contains Angular API services of backend [User and Group service](https://github.com/cyberrangecz/backend-user-and-group).
-It contains default implementation and mapping from DTOs to internal frontend model imported from [User and Group model](LINK-HERE).
+It contains default implementation and mapping from DTOs to internal frontend model imported from [User and Group model](https://github.com/cyberrangecz/frontend-user-and-group-model).
 You can override existing services by implementing the related abstract class and provide it in module.
 
 ## Usage
 
 To use user-and-group-api in your application, follow these steps:
 
-1. Run `npm install @cyberrangecz-platform/user-and-group-api`
+1. Run `npm install @crczp/user-and-group-api`
 2. Install peer dependencies
 3. Create an instance of `UserAndGroupApiConfig`
 4. Import `UserAndGroupApiModule` with config passed to `forRoot()` method
@@ -37,5 +37,3 @@ export class MyModule {
 }
 
 ```
-
-

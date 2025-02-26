@@ -3,13 +3,13 @@ import { UserAndGroupApiConfig } from './user-and-group-api-config';
 
 @Injectable()
 export class UserAndGroupContext {
-  private readonly _config: UserAndGroupApiConfig;
+    private readonly _config: UserAndGroupApiConfig;
 
-  get config(): UserAndGroupApiConfig {
-    return this._config;
-  }
+    get config(): UserAndGroupApiConfig {
+        return this._config;
+    }
 
-  constructor(config: UserAndGroupApiConfig) {
-    this._config = config;
-  }
+    constructor(config: UserAndGroupApiConfig) {
+        this._config = config;
+    }
 }
