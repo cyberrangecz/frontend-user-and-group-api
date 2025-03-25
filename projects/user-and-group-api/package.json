@@ -1,12 +1,12 @@
 {
     "name": "@crczp/user-and-group-api",
-    "version": "0.0.4",
+    "version": "1.0.0",
     "license": "MIT",
     "peerDependencies": {
         "@angular/common": "^18.2.13",
         "@angular/core": "^18.2.13",
         "@sentinel/common": "^18.0.4",
-        "@crczp/user-and-group-model": "^0.0.2"
+        "@crczp/user-and-group-model": "^1.0.0"
     },
     "dependencies": {
         "tslib": "^2.7.0"
